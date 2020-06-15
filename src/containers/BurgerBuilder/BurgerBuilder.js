@@ -5,10 +5,10 @@ import BuildControls from '../../components/Burger/BuildControls/BuildControls';
 
 
 const INGREDIENT_PRICES = {
-    salad: 0.5,
-    cheese: 0.3,
-    meat: 1.4,
-    bacon: 0.8
+    salad: 50,
+    cheese: 30,
+    meat: 40,
+    bacon: 80
 }
 // Burger builder component
 class BurgerBuilder extends Component {
@@ -21,7 +21,7 @@ class BurgerBuilder extends Component {
                 cheese: 0,
                 meat: 0,
             },
-            totalPrice: 4
+            totalPrice: 200
         }
     }
     addHandler = (type) => {
@@ -32,7 +32,7 @@ class BurgerBuilder extends Component {
         };
         updateIngredients[type] = updatedCount;
         const priceAddtion = INGREDIENT_PRICES[type];
-        const oldPrice = this.setState.totalPrice;
+        const oldPrice = this.state.totalPrice;
         const newPrice = oldPrice + priceAddtion;
         this.setState({ totalPrice: newPrice, ingredients: updateIngredients })
 
@@ -68,7 +68,12 @@ class BurgerBuilder extends Component {
         return (
             <Aux>
                 <Burger ingredients={this.state.ingredients} />
-                <BuildControls disabled={disableInfo} ingredientSubtracted={this.removeHandler} ingredientAdded={this.addHandler} />
+                <BuildControls disabled={disableInfo}
+                    ingredientSubtracted={this.removeHandler}
+                    ingredientAdded={this.addHandler}
+                    price={this.state.totalPrice}
+
+                />
             </Aux>
         );
     }
