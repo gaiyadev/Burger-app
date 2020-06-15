@@ -17,10 +17,10 @@
 
 @media(min-width: 500px) and (min-height: 400px) {
   .Burger {
-      height: 350px;
-      width: 300px;
+      height: 300px;
+      width: 350px;
   }  
-}
+} 
 
 @media(min-width: 500px) and (min-height: 401px) {
   .Burger {

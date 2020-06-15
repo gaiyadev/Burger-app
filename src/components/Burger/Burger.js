@@ -1,8 +1,8 @@
 import React from 'react';
-import BurgerIngredient from '../../components/Burger/BurgerIngredient/Burgeringredient';
 import styles from '../../components/Burger/BurgerIngredient/Burger.module.css';
+import BurgerIngredient from '../../components/Burger/BurgerIngredient/Burgeringredient';
 
-const Burger = (props) => {
+const burger = (props) => {
     return (
         <div className={styles.Burger} >
             <BurgerIngredient type="bread-top" />
@@ -13,4 +13,4 @@ const Burger = (props) => {
     );
 }
 
-export default Burger;
+export default burger;

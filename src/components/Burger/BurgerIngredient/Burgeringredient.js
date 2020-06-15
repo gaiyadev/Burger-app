@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import styles from '../BurgerIngredient/BurgerIngredient.module.css';
 
 class BurgerIngredient extends Component {
+
     render() {
         let ingredient = null;
 
@@ -18,12 +19,12 @@ class BurgerIngredient extends Component {
                 );
                 break;
             case ('meat'):
-                ingredient = <div className={styles.meat} ></div>;
+                ingredient = <div className={styles.Meat} ></div>;
                 break;
             case ('cheese'):
                 ingredient = <div className={styles.Cheese}></div>;
                 break;
-            case ('Salad'):
+            case ('salad'):
                 ingredient = <div className={styles.Salad} ></div>;
                 break;
             case ('bacon'):
