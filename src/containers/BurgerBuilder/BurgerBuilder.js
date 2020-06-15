@@ -13,3 +13,4 @@ class BurgerBuilder extends Component {
 }
 
 export default BurgerBuilder;
+// Burger builder component
