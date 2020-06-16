@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styles from '../../Burger/BuildControls/BuildControls.module.css';
 import BuildControl from '../BuildControls/BuildControl/BuildControl';
 
@@ -40,4 +41,7 @@ const buildControls = (props) => (
     </div>
 );
 
+buildControls.propsType = {
+    label: PropTypes.string.isRequired,
+}
 export default buildControls;

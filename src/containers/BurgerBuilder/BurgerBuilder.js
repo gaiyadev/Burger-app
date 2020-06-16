@@ -29,7 +29,7 @@ class BurgerBuilder extends Component {
             modal: false
         }
     }
-    //..Function to 
+    //..Function to able/disable order button
     purchasableHandler(ingredients) {
         const sum = Object.keys(ingredients).map(igKey => {
             return ingredients[igKey];
