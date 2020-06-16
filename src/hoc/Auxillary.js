@@ -3,4 +3,4 @@ const aux = (props) => props.children;
 export default aux;
 
 
-// HOC
+// Higher Order Componnent (HOC)

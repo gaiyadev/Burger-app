@@ -10,8 +10,9 @@ const layout = (props) => (
         <main className={styles.Content}>
             {props.children}
         </main>
-
     </Aux>
 
 );
 export default layout;
+
+//Application layout file

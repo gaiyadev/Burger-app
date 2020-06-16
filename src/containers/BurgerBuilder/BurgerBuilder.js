@@ -11,7 +11,8 @@ const INGREDIENT_PRICES = {
     cheese: 30,
     meat: 40,
     bacon: 80
-}
+};
+
 // Burger builder component
 class BurgerBuilder extends Component {
     constructor(props) {
@@ -114,3 +115,4 @@ class BurgerBuilder extends Component {
 }
 
 export default BurgerBuilder;
+//Burger builder component
