@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import Aux from '../../hoc/Auxillary';
 import Burger from '../../components/Burger/Burger';
 import BuildControls from '../../components/Burger/BuildControls/BuildControls';
 import Modal from '../../components/UI/Modal/Modal';
 import OrderSummary from '../../components/Burger/OrderSummary/Order';
-
 
 const INGREDIENT_PRICES = {
     salad: 50,
@@ -29,7 +29,7 @@ class BurgerBuilder extends Component {
             modal: false
         }
     }
-
+    //..Function to 
     purchasableHandler(ingredients) {
         const sum = Object.keys(ingredients).map(igKey => {
             return ingredients[igKey];
@@ -39,10 +39,12 @@ class BurgerBuilder extends Component {
         this.setState({ purchasable: sum > 0 });
     }
 
+    //.. Function to open and close modal window
     modalHandler = () => {
         this.setState({ modal: true });
     }
 
+    //.. Function to add ingredient
     addHandler = (type) => {
         const oldCount = this.state.ingredients[type];
         const updatedCount = oldCount + 1;
@@ -57,9 +59,9 @@ class BurgerBuilder extends Component {
         this.purchasableHandler(updateIngredients);
     }
 
+    //..Function to reduce ingredient
     removeHandler = (type) => {
         const oldCount = this.state.ingredients[type];
-
         // if (oldCount <= 0) {
         //     return;
         // }
@@ -75,13 +77,14 @@ class BurgerBuilder extends Component {
         this.purchasableHandler(updateIngredients);
     }
 
+    //..Function to close modal window
     closedHandler = () => {
         this.setState({ modal: false });
-
     }
 
+    //..Function to checkout
     purchaseContinueHandler = () => {
-        alert('u continue');
+        alert('You wanna continue');
     }
 
     render() {
@@ -107,12 +110,19 @@ class BurgerBuilder extends Component {
                     ingredientAdded={this.addHandler}
                     price={this.state.totalPrice}
                     purchasable={this.state.purchasable}
-                    ordered={this.modalHandler}
-                />
+                    ordered={this.modalHandler} />
             </Aux>
         );
     }
 }
 
+//Props validation
+BurgerBuilder.propsType = {
+    ingredients: PropTypes.number.isRequired,
+    ingredientAdded: PropTypes.func.isRequired,
+    ingredientSubtracted: PropTypes.func.isRequired,
+    ordered: PropTypes.func.isRequired,
+    purchasable: PropTypes.bool
+}
 export default BurgerBuilder;
 //Burger builder component

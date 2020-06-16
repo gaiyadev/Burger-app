@@ -5,14 +5,13 @@ import BurgerIngredient from '../../components/Burger/BurgerIngredient/Burgering
 const burger = (props) => {
     let BIngredient = Object.keys(props.ingredients).map(igKey => {
         return [...Array(props.ingredients[igKey])].map((_, i) => {
-            // console.log(props.ingredients);
             return <BurgerIngredient key={igKey + i} type={igKey} />
         });
     }).reduce((arr, el) => {
         return arr.concat(el);
     }, []);
     if (BIngredient.length === 0) {
-        BIngredient = <p>Please start adding ingredients</p>
+        BIngredient = <p>Please start adding ingredients (.-.) </p>
     }
 
     return (
@@ -23,5 +22,6 @@ const burger = (props) => {
         </div>
     );
 }
+
 
 export default burger;
