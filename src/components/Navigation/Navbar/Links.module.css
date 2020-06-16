@@ -25,3 +25,24 @@
     border-bottom: 4px solid #40A4C8;    
 }
  
+@media(min-width: 500px) {
+    .Link {
+    margin: 10px 0;
+    display: block;
+    width: 100%;
+}
+
+.Link a {
+    color: rgb(32, 6, 6);
+    width: auto;
+    display: block;
+}
+
+.Link a:hover,
+.Link a:active,
+ .Link a.active {
+    color: rgb(19, 82, 163);
+}
+ 
+
+}
