@@ -7,6 +7,7 @@ import Modal from '../../components/UI/Modal/Modal';
 import OrderSummary from '../../components/Burger/OrderSummary/Order';
 import axios from '../../axios-order';
 import Spinner from '../../components/UI/Spinner/Spinner';
+import WithError from '../../WithErrorHandler/WithError';
 
 const INGREDIENT_PRICES = {
     salad: 50,
@@ -159,5 +160,5 @@ BurgerBuilder.propsType = {
     ordered: PropTypes.func.isRequired,
     purchasable: PropTypes.bool
 }
-export default BurgerBuilder;
+export default WithError(BurgerBuilder, axios);
 //Burger builder component
