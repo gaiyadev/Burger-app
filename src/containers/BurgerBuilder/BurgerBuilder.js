@@ -30,7 +30,8 @@ class BurgerBuilder extends Component {
             totalPrice: 200,
             purchasable: false,
             modal: false,
-            loading: false
+            loading: false,
+            error: null
         }
     }
 
@@ -38,7 +39,10 @@ class BurgerBuilder extends Component {
         axios.get('https://burger-app-49821.firebaseio.com/ingredients.json')
             .then(response => {
                 this.setState({ ingredients: response.data });
-            }).catch(err => console.log(err));
+            }).catch(err => {
+                this.setState({ error: true });
+                console.log(err)
+            });
     }
 
 
@@ -142,7 +146,8 @@ class BurgerBuilder extends Component {
         }
 
 
-        let burger = <Spinner />;
+        let burger = this.state.error ?
+            <p>ingredient can be found</p> : <Spinner />;
         if (this.state.ingredients) {
             burger = (
                 <Aux>
