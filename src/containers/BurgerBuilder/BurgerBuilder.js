@@ -33,6 +33,15 @@ class BurgerBuilder extends Component {
             loading: false
         }
     }
+
+    componentDidMount() {
+        axios.get('https://burger-app-49821.firebaseio.com/ingredients.json')
+            .then(response => {
+                this.setState({ ingredients: response.data });
+            }).catch(err => console.log(err));
+    }
+
+
     //..Function to able/disable order button
     purchasableHandler(ingredients) {
         const sum = Object.keys(ingredients).map(igKey => {
@@ -126,27 +135,44 @@ class BurgerBuilder extends Component {
         for (let key in disableInfo) {
             disableInfo[key] = disableInfo[key] <= 0
         }
+        let orderSummary = null;
 
-        let orderSummary = <OrderSummary purchaseCancel={this.closedHandler}
-            purchaseContinue={this.purchaseContinueHandler}
-            price={this.state.totalPrice} ingredients={this.state.ingredients} />;
+        if (this.state.loading) {
+            orderSummary = <Spinner />
+        }
+
+
+        let burger = <Spinner />;
+        if (this.state.ingredients) {
+            burger = (
+                <Aux>
+                    <Burger ingredients={this.state.ingredients} />
+                    <BuildControls disabled={disableInfo}
+                        ingredientSubtracted={this.removeHandler}
+                        ingredientAdded={this.addHandler}
+                        price={this.state.totalPrice}
+                        purchasable={this.state.purchasable}
+                        ordered={this.modalHandler} />
+                </Aux>
+            );
+            orderSummary = <OrderSummary purchaseCancel={this.closedHandler}
+                purchaseContinue={this.purchaseContinueHandler}
+                price={this.state.totalPrice} ingredients={this.state.ingredients} />;
+
+
+        }
 
         if (this.state.loading) {
             orderSummary = <Spinner />;
         }
+
         return (
             <Aux>
                 <Modal show={this.state.modal} modalClosed={this.closedHandler} >
                     {orderSummary}
                 </Modal>
 
-                <Burger ingredients={this.state.ingredients} />
-                <BuildControls disabled={disableInfo}
-                    ingredientSubtracted={this.removeHandler}
-                    ingredientAdded={this.addHandler}
-                    price={this.state.totalPrice}
-                    purchasable={this.state.purchasable}
-                    ordered={this.modalHandler} />
+                {burger}
             </Aux>
         );
     }
