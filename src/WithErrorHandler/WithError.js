@@ -5,20 +5,27 @@ import Aux from '../hoc/Auxillary';
 const withError = (WrappedComponent, axios) => {
     return class extends Component {
         state = {
-            error: null
+            error: null,
+
         }
         componentWillMount() {
-            axios.interceptors.request.use(request => {
+            this.reqInterceptors = axios.interceptors.request.use(request => {
                 this.setState({ error: null });
                 return request;
             });
 
-            axios.interceptors.response.use(response => response,
+            this.resInterceptors = axios.interceptors.response.use(response => response,
                 error => {
                     this.setState({ error: error });
                 });
         }
+        //WARNING! To be deprecated in React v17. Use componentDidUpdate instead.
+        componentWillUpdate() {
 
+            axios.interceptors.request.eject(this.reqInterceptors);
+            axios.interceptors.response.eject(this.resInterceptors);
+
+        }
         errorConfirmHandler = () => {
             this.setState({ error: null });
         }
