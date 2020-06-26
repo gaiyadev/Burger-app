@@ -9,6 +9,7 @@ import axios from '../../axios-order';
 import Spinner from '../../components/UI/Spinner/Spinner';
 import WithError from '../../WithErrorHandler/WithError';
 
+
 const INGREDIENT_PRICES = {
     salad: 50,
     cheese: 30,
@@ -128,6 +129,8 @@ class BurgerBuilder extends Component {
         //         this.setState({ loading: false, purchasable: false })
         //         console.log(err)
         //     });
+
+        this.props.history.push('checkout')
 
     }
 
