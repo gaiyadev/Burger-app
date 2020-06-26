@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import CheckoutSummary from '../../../components/Order/CheckoutSummary';
+import CheckoutSummary from '../../../components/Order/CheckoutSummary/CheckoutSummary';
+
 class Checkout extends Component {
     constructor(props) {
         super(props);
