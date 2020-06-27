@@ -4,8 +4,8 @@ import Links from '../Navbar/Links';
 
 const navbarItems = (props) => (
     <ul className={styles.NavbarItems} >
-        <Links link="/" active={true}>BurgerBuilder</Links>
-        <Links link="/">Checkout</Links>
+        <Links link="/" >BurgerBuilder</Links>
+        <Links link="/orders">Orders</Links>
     </ul>
 );
 

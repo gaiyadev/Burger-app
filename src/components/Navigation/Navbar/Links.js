@@ -1,11 +1,12 @@
 import React from 'react';
 import styles from '../Navbar/Links.module.css';
+import { NavLink } from 'react-router-dom';
 
 const navbarItem = (props) => (
     <li className={styles.Link}>
-        <a className={props.active ? styles.active : null}
-            href={props.link}>{props.children}
-        </a>
+        <NavLink className={props.active ? styles.active : null}
+            to={props.link}>{props.children}
+        </NavLink>
     </li>
 );
 
