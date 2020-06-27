@@ -1,10 +1,24 @@
 import React from 'react';
 import styles from '../Order/Order.css';
-const Order = () => {
+import { checkPropTypes, number } from 'prop-types';
+const Order = (props) => {
+    const Ingredients = [];
+    for (let IngredientName in props.Ingredients) {
+        Ingredients.push({
+            name: props.Ingredients[IngredientName],
+            amount: props.Ingredients[IngredientName]
+        });
+    }
+    const IngredientOutput = Ingredients.map(ig => {
+        return <span style={{
+            textTransform: 'capitalize',
+            display: 'inline-block'
+        }} key={ig.name} >{ig.name} {ig.amount} </span>
+    })
     return (
         <div className={styles.Order} >
-            <p>Ingredients: Salad (1)</p>
-            <p>Price: NGN 200</p>
+            <p>Ingredients:{IngredientOutput}</p>
+            <p>Price: NGN {number.parse(props.price).toFix(2)} </p>
         </div>
     );
 }
